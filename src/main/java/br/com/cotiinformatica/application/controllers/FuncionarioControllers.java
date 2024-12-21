@@ -18,7 +18,4 @@ public class FuncionarioControllers {
 	public FuncionarioResponseDto cadastrarFuncionario(FuncionarioRequestDto dto) {
 		return funcionarioServices.cadastrarFuncionario(dto);
 	}
-	
-	
-
 }

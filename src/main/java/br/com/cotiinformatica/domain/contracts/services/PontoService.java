@@ -5,6 +5,12 @@ import br.com.cotiinformatica.domain.models.dtos.PontoResponseDto;
 
 public interface PontoService {
 	
-	PontoResponseDto baterPontoEntrada(PontoRequestDto dto);
+	PontoResponseDto baterPontoEntradaTrabalho(PontoRequestDto dto);
+	
+	PontoResponseDto baterEntradaAlmoco(PontoRequestDto dto);
+	
+	PontoResponseDto baterSaidaAlmoco(PontoRequestDto dto);
+	
+	PontoResponseDto baterPontoSaidaTrabalho(PontoRequestDto dto);
 	
 }

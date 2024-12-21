@@ -20,17 +20,11 @@ public class Ponto {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "inicio_servico", nullable = true)
-    private Date inicioServico;
+    @Column(name = "data_hora", nullable = true)
+    private Date dataHora;
 
-    @Column(name = "inicio_almoco", nullable = true)
-    private Date inicioAlmoco;
-
-    @Column(name = "fim_almoco", nullable = true)
-    private Date fimAlmoco;
-
-    @Column(name = "fim_servico", nullable = true)
-    private Date fimServico;
+    @Column(name = "nome_ponto", nullable = true)
+    private String nomePonto;
 
     @ManyToOne
     @JoinColumn(name = "funcionario_id", nullable = false)
