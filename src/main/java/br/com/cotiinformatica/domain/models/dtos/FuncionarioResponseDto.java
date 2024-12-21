@@ -9,5 +9,6 @@ public class FuncionarioResponseDto {
 	private UUID id;
 	private String nome;
 	private String cargo;
+	private String coordenada;
 	//private List<Ponto> pontos;
 }

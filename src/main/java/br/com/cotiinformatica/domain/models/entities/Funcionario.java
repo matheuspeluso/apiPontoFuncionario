@@ -25,6 +25,9 @@ public class Funcionario {
 	@Column(name = "cargo", nullable = false)
 	Cargo cargo;
 	
+	@Column(name = "coordenada", nullable = false)
+	private String coordenada;
+	
 	@OneToMany(mappedBy = "funcionario") 
     private List<Ponto> pontos;
 }
