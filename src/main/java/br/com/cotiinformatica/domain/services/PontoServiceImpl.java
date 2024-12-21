@@ -1,12 +1,15 @@
 package br.com.cotiinformatica.domain.services;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cotiinformatica.domain.contracts.services.PontoService;
+import br.com.cotiinformatica.domain.models.dtos.PontoRequestConsultaIdFuncionarioPorData;
 import br.com.cotiinformatica.domain.models.dtos.PontoRequestDto;
 import br.com.cotiinformatica.domain.models.dtos.PontoResponseDto;
 import br.com.cotiinformatica.domain.models.entities.Ponto;
@@ -107,5 +110,34 @@ public class PontoServiceImpl implements PontoService {
 		
 		return response;
 	}
+
+	@Override
+	public List<PontoResponseDto> consultarPorId(PontoRequestConsultaIdFuncionarioPorData dto) {
+	    // Verifica se o funcionário existe
+	    var funcionario = funcionarioRepository.findById(dto.getIdFuncionario())
+	            .orElseThrow(() -> new IllegalArgumentException("Funcionário não encontrado. Verifique o ID informado."));
+
+	    // Consulta os pontos do funcionário no intervalo de data especificado
+	    var pontos = pontoRepository.findPontosByFuncionarioIdAndData(
+	            funcionario.getId(), dto.getDataIncio(), dto.getDataFim());
+
+	    // Lista para armazenar as respostas
+	    List<PontoResponseDto> responseList = new ArrayList<>();
+
+	    // Mapeia os pontos encontrados para a resposta usando for
+	    for (Ponto ponto : pontos) {
+	        var response = new PontoResponseDto();
+	        response.setId(ponto.getId());
+	        response.setDataHora(ponto.getDataHora());
+	        response.setNomePonto(ponto.getNomePonto());
+	        response.setMensagem("Consulta realizada com sucesso para o ponto: " + ponto.getNomePonto());
+	        responseList.add(response);
+	    }
+
+	    return responseList;
+	}
+
+
+	
 
 }
