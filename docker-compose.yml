@@ -10,7 +10,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db_apiPontoFuncionario
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 0505
+      SPRING_DATASOURCE_PASSWORD: coti
     depends_on:
       - postgres
 
@@ -22,7 +22,7 @@ services:
     environment:
       POSTGRES_DB: db_apiPontoFuncionario
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 0505
+      POSTGRES_PASSWORD: coti
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
